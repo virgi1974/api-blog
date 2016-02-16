@@ -72,6 +72,16 @@ userModel --> has_secure_password
 we need a confirmation password field 
 we need a 'password_digest' field --> rename_column :users, :password, :password_digest
 
+# we create a module for some methods so we keep orr code DRY --> spec/support/request_helpers.rb
+module Request
+  module JsonHelpers
+    def json_response
+
+      # 
+RSpec.configure do |config|
+  *******************
+  config.include Request::JsonHelpers, type: :request
+end
 
 
 
