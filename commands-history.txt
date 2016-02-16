@@ -1,0 +1,19 @@
+gem install rails-api
+rails-api new api-blog
+
+cd api-blog
+git init
+git add .
+git commit -m "skeleton + pry+pg gems"
+git remote add origin https://github.com/virgi1974/api-blog.git
+git push -u origin master
+
+bundle install
+rake db:create
+
+rails-api g scaffold user email:string password:string auth_token:string
+git commit -m "user scaffold"
+
+git commit -m "api/v1 namespace+version structure for usersController"
+
+git commit -m "gems for testing"
