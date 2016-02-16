@@ -64,6 +64,13 @@ end
 we create the same structure for testing controllers that the one we have
 for controllers themselves ap>v1>userscontroller.rb
 
+before we test-create the usersController methods we need to change how the 
+password is stored --> we need a 'digest' password
+
+gem 'bcrypt'
+userModel --> has_secure_password
+we need a confirmation password field 
+we need a 'password_digest' field --> rename_column :users, :password, :password_digest
 
 
 
