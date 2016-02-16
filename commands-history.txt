@@ -60,6 +60,12 @@ end
   it { should validate_presence_of(:auth_token) }
   validates :auth_token, presence: true
 
+# TDD controller methods
+we create the same structure for testing controllers that the one we have
+for controllers themselves ap>v1>userscontroller.rb
+
+
+
 
 
 
