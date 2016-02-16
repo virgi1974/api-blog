@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   validates :password, presence: true
   validates :password_confirmation, presence: true
 
-  validates :auth_token, presence: true
+  # validates :auth_token, presence: true
   validates :auth_token, uniqueness: true
 
   validates :password_digest, presence: true

@@ -24,8 +24,13 @@ describe User do
   it { should validate_presence_of(:password_digest) }
 
 
-  it { should validate_presence_of(:auth_token) }
+  # it { should validate_presence_of(:auth_token) }
   it { should validate_uniqueness_of(:auth_token) }
+
+  it "generates another token when one already exists" do
+    existing_user = FactoryGirl.create(:user, auth_token: "4J-f5HEHeDL_W9-dospW")
+    expect(@user.auth_token).not_to eql existing_user.auth_token
+  end
 
 
 

@@ -3,6 +3,6 @@ FactoryGirl.define do
     email { FFaker::Internet.email }
     password "12345678"
     password_confirmation "12345678"
-    auth_token "4J-f5HEHeDL_W9-dospW"
+    # auth_token "4J-f5HEHeDL_W9-dospW"
   end
 end
