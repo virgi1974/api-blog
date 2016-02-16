@@ -6,7 +6,7 @@ describe Api::V1::UsersController do
   describe "GET #index" do
     before(:each) do
       @user = FactoryGirl.create :user
-      get :index
+      get :index, format: :json
       @user_response = JSON.parse(response.body, symbolize_names: true)
     end
 
@@ -25,20 +25,26 @@ describe Api::V1::UsersController do
   describe "GET #show" do
     before(:each) do
       @user = FactoryGirl.create :user
-      get :show ,id: @user.id
+      get :show ,id: @user.id, format: :json
       @user_response = JSON.parse(response.body, symbolize_names: true)
     end
+    context "when route is successfully accessed" do
+      it "response contains the user data" do
+        expect(@user_response[:email]).to eql @user.email
+        expect(@user_response[:auth_token]).to eql @user.auth_token
+        expect(@user_response[:password_digest]).to eql @user.password_digest
+      end
+      it "response not empty" do
+        expect(@user_response.empty?).to be(false)
+      end
 
-    it "response contains the users data" do
-      expect(@user_response[:email]).to eql @user.email
-      expect(@user_response[:auth_token]).to eql @user.auth_token
-      expect(@user_response[:password_digest]).to eql @user.password_digest
+      it { should respond_with 200 }
     end
-    it "response adds all users" do
-      expect(@user_response.empty?).to be(false)
+    context "when NOT successfully accesed" do
+      it "can´t route to a non-existing show-user-action" do
+        expect(get: :show,id: 4).not_to be_routable
+      end
     end
-
-    it { should respond_with 200 }
   end
 
 end #describe Api::V1::UsersController 
