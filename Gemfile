@@ -16,3 +16,7 @@ group :development, :test do
   gem "factory_girl_rails"
   gem 'ffaker'
 end
+
+group :test do
+   gem 'shoulda-matchers', require: false
+end

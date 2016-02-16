@@ -39,3 +39,37 @@ config/application.rb
       auth_token "4J-f5HEHeDL_W9-dospW"
     end
   end
+
+# TESTING USER-MODEL
+
+# SHOULDA-MATCHERS
+# Gemfile
+group :test do
+   gem 'shoulda-matchers', require: false
+end
+
+#  in spec_helper.rb we have to integrate it with Rspec
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
