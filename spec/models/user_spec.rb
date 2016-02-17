@@ -20,12 +20,18 @@ describe User do
 # shoulda matchers in action
   it { should validate_presence_of(:email) }
   it { should validate_uniqueness_of(:email) }
+
+ 
+  it { should_not allow_value("base@example").for(:email) }
+  it { should_not allow_value("baseexample.es").for(:email) }
+  it { should_not allow_value("   ").for(:email) }
   it { should allow_value('example@domain.com').for(:email) }
+
   it { should validate_presence_of(:password_digest) }
 
-
-  # it { should validate_presence_of(:auth_token) }
   it { should validate_uniqueness_of(:auth_token) }
+
+
 
   it "generates another token when one already exists" do
     existing_user = FactoryGirl.create(:user, auth_token: "4J-f5HEHeDL_W9-dospW")
